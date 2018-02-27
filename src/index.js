@@ -1,11 +1,22 @@
 import React from 'react';
 import { render } from 'react-dom';
+import { Router, Route, hashHistory } from 'react-router';
 import { Provider } from 'react-redux';
 import store from './store';
-import { getCountries } from './actions/actions-countries.js'
+import { getCountries } from './actions/actions-countries.js';
+import routes from './routes';
 import DevTools from './DevTools';
 
+
 render(
+    <Provider store={store}>        
+        <Router history={hashHistory} routes={routes}/>
+
+    </Provider>,
+    document.getElementById('root')
+);
+
+/*render(
     <Provider store={store}>
         <div>
             <h1>Inicjalizacja projektu</h1>
@@ -15,7 +26,7 @@ render(
     document.getElementById('root')
 );
 
-store.dispatch(getCountries());
+store.dispatch(getCountries());*/
 
 
 
